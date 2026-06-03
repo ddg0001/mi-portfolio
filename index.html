@@ -4,307 +4,333 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Durán | Portfolio Profesional</title>
-    <!-- Tailwind CSS para el diseño premium y fluido -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Lucide Icons para los iconos limpios -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Three.js para la animación matemática de Shaders en el Hero -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         body { 
             background-color: #020204; 
             overflow-x: hidden;
         }
-        /* Fondo premium de malla de gradiente fija para el resto de la página */
+        /* Fondo premium de malla de gradiente fija para la parte inferior */
         .bg-gradient-mesh {
             background-image: 
-                radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(147, 51, 234, 0.08) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.08) 0px, transparent 50%),
                 radial-gradient(at 50% 100%, rgba(30, 64, 175, 0.05) 0px, transparent 50%);
         }
+        
+        /* Estilos nativos del prompt para ContainerScroll (Efecto 3D de la Tablet) */
+        .scroll-perspective {
+            perspective: 1000px;
+        }
+        .scroll-card {
+            transform: rotateX(15deg) scale(0.95);
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px rgba(0,0,0,0.4);
+        }
+
+        /* Estilos nativos del prompt extendidos para RadialOrbitalTimeline */
+        .orbit-perspective { perspective: 1000px; }
+        .node-transition { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+        .animate-pulse-custom { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-ping-custom { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
     </style>
 </head>
-<body class="bg-gradient-mesh text-zinc-100 font-sans selection:bg-orange-500 selection:text-black min-h-screen relative antialiased">
+<body class="text-zinc-100 font-sans selection:bg-orange-500 selection:text-black min-h-screen relative antialiased">
 
-    <!-- CONTENIDO GENERAL -->
-    <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-24">
-
-        <!-- SECCIÓN 1: IMPLEMENTACIÓN DEL PROMPT DEL SHADER INICIAL (Tarjeta Azul + Animación + Texto Absoluto) -->
-        <section class="w-full flex items-center justify-center pt-4">
-            <div class="relative flex h-[650px] w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-zinc-800 bg-blue-700 shadow-2xl">
-                
-                <!-- Contenedor del Canvas para la animación matemática de Three.js -->
-                <div id="shader-container" class="absolute inset-0 w-full h-full z-0"></div>
-                
-                <!-- Texto absoluto superpuesto sin eventos de puntero según especificaciones -->
-                <span class="absolute pointer-events-none z-10 text-center text-5xl sm:text-7xl leading-none font-semibold tracking-tighter whitespace-pre-wrap text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">Shader Animation</span>
-                
-                <!-- Indicador de bajada para móviles -->
-                <div class="absolute bottom-6 z-10 animate-bounce text-white/50">
-                    <i data-lucide="chevron-down" class="w-7 h-7"></i>
-                </div>
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-zinc-900/60">
+        <div id="shader-container" class="absolute inset-0 w-full h-full z-0 opacity-70"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-(#020204) z-10"></div>
+        
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto space-y-6">
+            <div class="space-y-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 uppercase tracking-wider backdrop-blur-sm">
+                    <i data-lucide="flame" class="w-3.5 h-3.5 animate-pulse"></i> Disponible para Proyectos
+                </span>
+                <h1 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter text-white uppercase select-none drop-shadow-md">
+                    Daniel Durán García
+                </h1>
+                <p class="text-xs sm:text-sm font-mono uppercase tracking-widest text-zinc-300 bg-black/40 border border-zinc-800/60 inline-block px-3 py-1 rounded-md backdrop-blur-sm">
+                    Técnico Superior en Enseñanza y Animación Sociodeportiva (TSEAS) [cite: 16, 19]
+                </p>
             </div>
-        </section>
 
-        <!-- SECCIÓN DE PRESENTACIÓN GENERAL (Datos CV Daniel Durán) -->
-        <header class="text-center space-y-4 max-w-4xl mx-auto">
-            <h2 class="text-5xl sm:text-6xl font-black uppercase tracking-tight text-white">Daniel Durán García</h2>
-            <p class="text-xs sm:text-sm font-mono uppercase tracking-widest text-orange-400">
-                Técnico Superior en Enseñanza y Animación Sociodeportiva (TSEAS)[cite: 1]
-            </p>
-            <p class="text-base sm:text-lg text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-                Estudiante universitario de Ciencias de la Actividad Física y del Deporte (<strong class="text-zinc-200">CAFYD</strong>) en la Universidad Europea[cite: 1]. Con doble especialización máster en Entrenamiento Personal y Nutrición Deportiva y Clínica[cite: 1]. Más de 3 años de experiencia liderando y dinamizando grupos en diversos entornos deportivos y sociales[cite: 1].
+            <p class="text-base sm:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed drop-shadow">
+                Estudiante universitario de Ciencias de la Actividad Física y del Deporte (<strong class="text-white">CAFYD</strong>) en la Universidad Europea[cite: 20, 30]. Con doble especialización máster en Entrenamiento Personal y Nutrición[cite: 19]. Más de 3 años de experiencia liderando y dinamizando grupos[cite: 20].
             </p>
 
             <div class="flex flex-wrap justify-center gap-3 pt-2">
-                <a href="mailto:dani.duran.garcia@gmail.com" class="px-5 py-2.5 bg-white text-black font-semibold rounded-xl hover:bg-orange-500 hover:text-white transition-all text-sm shadow-lg">
-                    Contactar <span class="text-xs opacity-60">(dani.duran.garcia@gmail.com)</span>[cite: 1]
+                <a href="mailto:dani.duran.garcia@gmail.com" class="px-5 py-2.5 bg-white text-black font-semibold rounded-xl hover:bg-orange-500 hover:text-white transition-all text-sm shadow-xl">
+                    Contactar <span class="text-xs opacity-60">(dani.duran.garcia@gmail.com)</span> [cite: 1, 2]
                 </a>
-                <a href="https://www.linkedin.com/in/daniel-durán-garcía-61736127a" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-950 text-zinc-300 font-semibold rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all text-sm">
-                    LinkedIn <i data-lucide="external-link" class="w-3.5 h-3.5"></i>[cite: 1]
+                <a href="https://www.linkedin.com/in/daniel-durán-garcía-61736127a" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-950 text-zinc-300 font-semibold rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all text-sm backdrop-blur-sm">
+                    LinkedIn <i data-lucide="external-link" class="w-3.5 h-3.5"></i> [cite: 3, 4]
                 </a>
             </div>
-        </header>
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-white/40">
+                <i data-lucide="chevron-down" class="w-7 h-7"></i>
+            </div>
+        </div>
+    </header>
 
-        <!-- SECCIÓN 2: VALOR DIFERENCIAL (Formato Bento Premium) -->
+    <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-20 space-y-24 bg-gradient-mesh">
+
         <section class="space-y-6">
             <div class="bg-zinc-900/30 border border-zinc-800/80 rounded-2xl p-6 sm:p-8 space-y-4 backdrop-blur-sm">
                 <div class="flex items-center gap-2 text-orange-400 font-mono text-xs uppercase tracking-wider">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> Enfoque Deportivo de Acción[cite: 1]
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Enfoque Deportivo de Acción [cite: 16]
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                    Pasión por el Patinaje Scooter Freestyle y la Gestión[cite: 1]
+                    Pasión por el Patinaje Scooter Freestyle y la Gestión [cite: 16, 23, 24]
                 </h2>
                 <p class="text-zinc-400 leading-relaxed text-sm sm:text-base">
-                    Mi expertise se centra en el diseño e impartición de actividades de <strong>Team Building</strong>, coordinación de eventos urbanos y deportivos masivos, aplicando conocimientos avanzados en psicología del deporte e inclusión[cite: 1]. Esta disciplina de acción ha forjado en mí la resiliencia y el compromiso necesarios para la alta competición y la gestión de proyectos exigentes[cite: 1].
+                    Mi expertise se centra en el diseño e impartición de actividades de <strong>Team Building</strong>, coordinación de eventos urbanos y deportivos masivos, aplicando conocimientos avanzados en psicología del deporte e inclusión[cite: 21]. Esta disciplina de acción ha forjado en mí la resiliencia y el compromiso necesarios para la alta competición y la gestión de proyectos exigentes[cite: 23].
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div class="flex items-center gap-3 bg-zinc-950 p-3.5 rounded-xl border border-zinc-900">
                         <i data-lucide="users" class="w-5 h-5 text-orange-400"></i>
                         <div>
                             <p class="text-[10px] text-zinc-500 uppercase font-mono">Dinamización</p>
-                            <p class="text-xs font-bold text-zinc-300">+3 años liderando grupos[cite: 1]</p>
+                            <p class="text-xs font-bold text-zinc-300">+3 años liderando grupos [cite: 20]</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-3 bg-zinc-950 p-3.5 rounded-xl border border-zinc-900">
                         <i data-lucide="bike" class="w-5 h-5 text-purple-400"></i>
                         <div>
                             <p class="text-[10px] text-zinc-500 uppercase font-mono">Competición</p>
-                            <p class="text-xs font-bold text-zinc-300">Scooter Rider & Especialista Urbano[cite: 1]</p>
+                            <p class="text-xs font-bold text-zinc-300">Scooter Rider & Especialista Urbano [cite: 16, 44]</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 3: FORMACIÓN ACADÉMICA (Estructura Limpia) -->
+        <section id="scroll-section" class="w-full py-4 scroll-perspective text-center">
+            <div id="scroll-header" class="max-w-5xl mx-auto text-center space-y-3 mb-10 transition-transform duration-200">
+                <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight uppercase">Experiencia en Gestión y Eventos </h2>
+                <p class="text-zinc-500 text-sm max-w-md mx-auto">Pasa el dedo por encima de las cartas de la cascada inclinada para quitarles el filtro gris y sacarlas de la pila.</p>
+            </div>
+
+            <div id="container-scroll-card" class="scroll-card max-w-5xl mx-auto border-4 border-[#6C6C6C] p-4 sm:p-6 bg-[#222222] rounded-[30px]">
+                <div class="w-full min-h-[460px] rounded-2xl bg-zinc-950 p-6 flex flex-col md:flex-row gap-16 justify-center items-center overflow-hidden">
+                    
+                    <div class="flex flex-col items-center space-y-4">
+                        <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase flex items-center gap-2"><i data-lucide="bike" class="w-4 h-4"></i> Soul Wheel & FNS [cite: 6, 41]</span>
+                        <div class="grid [grid-template-areas:'stack'] place-items-center h-48 w-[22rem]">
+                            
+                            <div class="[grid-area:stack] hover:-translate-y-12 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative inline-block rounded-full bg-purple-950/60 border border-purple-800 p-1.5 text-purple-400"><i data-lucide="navigation" class="w-4 h-4"></i></span>
+                                    <p class="text-sm font-bold text-white">Técnico - TreXcantos [cite: 34, 37]</p>
+                                </div>
+                                <p class="text-xs text-zinc-300 leading-normal">Coordinación de actividades en eventos municipales en Tres Cantos[cite: 36, 37].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">Septiembre 2025 [cite: 35]</p>
+                            </div>
+                            
+                            <div class="[grid-area:stack] translate-x-12 translate-y-8 hover:-translate-y-4 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative inline-block rounded-full bg-purple-950/60 border border-purple-800 p-1.5 text-purple-400"><i data-lucide="shield" class="w-4 h-4"></i></span>
+                                    <p class="text-sm font-bold text-white">Fiestas de Sanse [cite: 47]</p>
+                                </div>
+                                <p class="text-xs text-zinc-300 leading-normal">Control logístico y dirección de circuitos urbanos en San Sebastián de los Reyes[cite: 46, 47].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">Agosto 2025 [cite: 45]</p>
+                            </div>
+                            
+                            <div class="[grid-area:stack] translate-x-24 translate-y-16 hover:translate-y-6 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-purple-500/30 bg-zinc-900/95 p-4 transition-all duration-700 shadow-xl">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative inline-block rounded-full bg-purple-500/20 p-1.5 text-purple-400"><i data-lucide="activity" class="w-4 h-4"></i></span>
+                                    <p class="text-sm font-bold text-purple-400">Madrid Friday Night Skate [cite: 41]</p>
+                                </div>
+                                <p class="text-xs text-zinc-200 leading-normal">Especialista técnico deportivo en control operativo y seguridad de rutas masivas[cite: 41, 44].</p>
+                                <p class="text-[10px] font-mono text-zinc-400">Mobility Week / Iskate.madrid [cite: 42, 43]</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center space-y-4 pt-10 md:pt-0">
+                        <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> Kaizen Team Building [cite: 75, 107]</span>
+                        <div class="grid [grid-template-areas:'stack'] place-items-center h-48 w-[22rem]">
+                            
+                            <div class="[grid-area:stack] hover:-translate-y-12 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative inline-block rounded-full bg-blue-950/60 border border-blue-800 p-1.5 text-blue-400"><i data-lucide="map" class="w-4 h-4"></i></span>
+                                    <p class="text-sm font-bold text-white">Ruta Interprovincial [cite: 207]</p>
+                                </div>
+                                <p class="text-xs text-zinc-300 leading-normal">Dinamización logística de eventos en Zaragoza, Toledo, Burgos, Zamora y Segovia[cite: 77, 79, 84, 92, 100].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">2024 - 2025 [cite: 75, 107]</p>
+                            </div>
+                            
+                            <div class="[grid-area:stack] translate-x-12 translate-y-8 hover:-translate-y-4 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative inline-block rounded-full bg-blue-950/60 border border-blue-800 p-1.5 text-blue-400"><i data-lucide="map-pin" class="w-4 h-4"></i></span>
+                                    <p class="text-sm font-bold text-white">Dinamización Local [cite: 20]</p>
+                                </div>
+                                <p class="text-xs text-zinc-300 leading-normal">Monitor de actividades en Colmenar, Arganda del Rey, Villalba y Madrid Centro[cite: 76, 87, 94, 98, 201].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">Eventos Corporativos [cite: 38]</p>
+                            </div>
+                            
+                            <div class="[grid-area:stack] translate-x-24 translate-y-16 hover:translate-y-6 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-blue-500/30 bg-zinc-900/95 p-4 transition-all duration-700 shadow-xl">
+                                <div class="flex items-center gap-2">
+                                    <span class="relative inline-block rounded-full bg-blue-500/20 p-1.5 text-blue-400"><i data-lucide="folder-open" class="w-4 h-4"></i></span>
+                                    <p class="text-sm font-bold text-blue-400">Auxiliar Administrativo [cite: 205]</p>
+                                </div>
+                                <p class="text-xs text-zinc-200 leading-normal">Soporte y gestión organizativa interna de agendas y recursos de transporte por España[cite: 206, 207].</p>
+                                <p class="text-[10px] font-mono text-zinc-400">Estructura Kaizen (6 meses) [cite: 199, 206]</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-black relative border-t border-zinc-900/80 overflow-hidden min-h-[650px] flex flex-col items-center justify-center">
+            <div class="max-w-3xl mx-auto text-center px-4 mb-4 space-y-3 relative z-30">
+                <h2 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight uppercase">Cronograma Orbital de Proyectos</h2>
+                <p class="text-zinc-400 text-xs sm:text-sm">Haz clic en los nodos giratorios para expandir los hitos del currículum y verificar el nivel de exigencia logística de cada uno.</p>
+            </div>
+            
+            <div id="timeline-container" class="w-full max-w-4xl h-[500px] relative flex items-center justify-center" onclick="resetTimeline(event)">
+                <div id="orbit-plane" class="absolute w-full h-full flex items-center justify-center orbit-perspective pointer-events-none">
+                    <div class="absolute w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 via-red-500 to-purple-600 animate-pulse-custom flex items-center justify-center z-10">
+                        <div class="absolute w-18 h-18 rounded-full border border-orange-500/20 animate-ping-custom"></div>
+                        <div class="w-6 h-6 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center">
+                            <i data-lucide="zap" class="w-3.5 h-3.5 text-orange-400"></i>
+                        </div>
+                    </div>
+                    <div class="absolute w-[360px] h-[360px] rounded-full border border-white/5"></div>
+                </div>
+                <div id="nodes-wrapper" class="absolute inset-0 w-full h-full flex items-center justify-center"></div>
+            </div>
+        </section>
+
         <section class="space-y-6">
             <div class="flex items-center gap-2 border-b border-zinc-800 pb-3">
                 <i data-lucide="graduation-cap" class="w-5 h-5 text-orange-500"></i>
-                <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Historial Educativo</h2>
+                <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Historial Educativo [cite: 327]</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 space-y-3">
                     <div class="flex items-center gap-2 text-xs font-mono text-orange-400">
-                        <span>2025 - PRESENTE</span> • UNIVERSIDAD EUROPEA[cite: 1]
+                        <span>2025 - PRESENTE</span> • UNIVERSIDAD EUROPEA [cite: 26, 28]
                     </div>
-                    <h3 class="text-base font-bold text-white">Ciencias de la Actividad Física y del Deporte (CAFYD)[cite: 1]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Formación universitaria de primer año orientada al análisis científico del rendimiento, la salud, la biomecánica y la dirección técnica de entidades[cite: 1].</p>
+                    <h3 class="text-base font-bold text-white">Ciencias de la Actividad Física y del Deporte (CAFYD) [cite: 30]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Estudios de grado enfocados en alto rendimiento, biomecánica aplicada, fisiología del ejercicio y dirección técnica corporativa[cite: 21, 27].</p>
                 </div>
 
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 space-y-3">
                     <div class="flex items-center gap-2 text-xs font-mono text-purple-400">
-                        <span>2022 - 2024</span> • IES PINTOR ANTONIO LÓPEZ[cite: 1]
+                        <span>2022 - 2024</span> • IES PINTOR ANTONIO LÓPEZ [cite: 328, 329]
                     </div>
-                    <h3 class="text-base font-bold text-white">TSEAS (Enseñanza y Animación Sociodeportiva)[cite: 1]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Técnico Superior enfocado en la organización, planificación estratégica, gestión y liderazgo regulado de actividades físico-deportivas grupales[cite: 1].</p>
+                    <h3 class="text-base font-bold text-white">TSEAS (Enseñanza y Animación Sociodeportiva) [cite: 329]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Técnico Superior capacitado oficialmente en el liderazgo, programación y control táctico de actividades físico-deportivas[cite: 19].</p>
                 </div>
 
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 space-y-3">
                     <div class="flex items-center gap-2 text-xs font-mono text-blue-400">
-                        <span>2020 - 2022</span> • MEDAC[cite: 1]
+                        <span>2020 - 2022</span> • MEDAC [cite: 330, 332]
                     </div>
-                    <h3 class="text-base font-bold text-white">TECO (Actividades en el Medio Natural)[cite: 1]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Conducción reglada de grupos, guías especializadas e itinerarios físico-deportivos en entornos naturales abiertos y de montaña[cite: 1].</p>
+                    <h3 class="text-base font-bold text-white">TECO (Actividades en el Medio Natural) [cite: 332]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Conducción oficial de grupos en itinerarios físico-deportivos en entornos de montaña y medio natural abierto[cite: 332].</p>
                 </div>
 
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 flex flex-col justify-center space-y-2.5">
-                    <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-900 pb-1.5 font-mono">Másteres Profesionales Avanzados (MEDAC)[cite: 1]</h4>
+                    <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-900 pb-1.5 font-mono">Másteres Profesionales Avanzados (MEDAC) [cite: 19, 333, 335]</h4>
                     <div class="flex items-center justify-between text-xs bg-zinc-900/40 px-3 py-2 rounded-lg border border-zinc-800/50">
-                        <span class="text-zinc-200 font-medium">Entrenamiento Personal[cite: 1]</span>
-                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025 (Cursado)[cite: 1]</span>
+                        <span class="text-zinc-200 font-medium">Entrenamiento Personal [cite: 334]</span>
+                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025 [cite: 334]</span>
                     </div>
                     <div class="flex items-center justify-between text-xs bg-zinc-900/40 px-3 py-2 rounded-lg border border-zinc-800/50">
-                        <span class="text-zinc-200 font-medium">Nutrición Deportiva y Clínica[cite: 1]</span>
-                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025 (Cursado)[cite: 1]</span>
+                        <span class="text-zinc-200 font-medium">Nutrición Deportiva y Clínica [cite: 336]</span>
+                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025 [cite: 336]</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 4: EXPERIENCIA DETALLADA (Historial Completo del CV) -->
-        <section class="space-y-6">
-            <div class="flex items-center gap-2 border-b border-zinc-800 pb-3">
-                <i data-lucide="briefcase" class="w-5 h-5 text-orange-500"></i>
-                <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Experiencia en Gestión y Eventos</h2>
-            </div>
-
-            <!-- Bloque Soul Wheel -->
-            <div class="space-y-3">
-                <h3 class="text-sm font-bold text-zinc-400 flex items-center gap-2 font-mono uppercase tracking-wider">
-                    <i data-lucide="shield" class="w-4 h-4 text-purple-400"></i> Gestión de Eventos Urbanos — Asociación Soul Wheel[cite: 1]
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">SEPTIEMBRE 2025[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Técnico Deportivo - TreXcantos[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1 leading-normal">Dinamización y control de actividades en eventos corporativos y municipales en Tres Cantos[cite: 1].</p>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">AGOSTO 2025[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Especialista Técnico - Fiestas Sanse[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1 leading-normal">Control logístico, seguridad y dirección de actividades urbanas masivas en San Sebastián de los Reyes[cite: 1].</p>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">MAYO - JUNIO 2025[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Día de la Salud en Sanse[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1 leading-normal">Dinamización técnica y despliegue participativo enfocado en actividad física comunitaria[cite: 1].</p>
-                    </div>
-                </div>
-                <div class="bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/40 text-xs text-zinc-400 leading-relaxed">
-                    <strong>Madrid Friday Night Skate:</strong> Especialista técnico recurrente en rutas urbanas masivas coordinando la seguridad vial y control técnico (European Mobility Week, Patinadores Madrid, Patinarollers, Iskate.madrid)[cite: 1].
-                </div>
-            </div>
-
-            <!-- Bloque Kaizen -->
-            <div class="space-y-3 pt-2">
-                <h3 class="text-sm font-bold text-zinc-400 flex items-center gap-2 font-mono uppercase tracking-wider">
-                    <i data-lucide="users" class="w-4 h-4 text-blue-400"></i> Dinámicas Corporativas — Kaizen Team Building[cite: 1]
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">CASTILLA Y LEÓN[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Burgos, Segovia & Zamora[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1">Liderazgo de grupos multidisciplinares en eventos empresariales de alta cohesión[cite: 1].</p>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">ARAGÓN & LA MANCHA[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Zaragoza & Toledo[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1">Logística de campo y despliegue técnico coordinando actividades corporativas exigentes[cite: 1].</p>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">COMUNIDAD DE MADRID[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Colmenar, Arganda & Sanse[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1">Dinamización sociodeportiva a nivel local adaptada a empresas y colectivos sociales[cite: 1].</p>
-                    </div>
-                    <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900">
-                        <span class="text-[10px] font-mono text-zinc-500 block">SOPORTE DE DIRECCIÓN[cite: 1]</span>
-                        <h4 class="text-xs font-bold text-zinc-200 mt-0.5">Auxiliar Administrativo[cite: 1]</h4>
-                        <p class="text-[11px] text-zinc-400 mt-1">Gestión organizativa interna y soporte logístico a nivel interprovincial por España (6 meses)[cite: 1].</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sectores Adicionales -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+        <section class="space-y-4">
+            <h3 class="text-sm font-bold text-zinc-500 font-mono uppercase tracking-wider">Otras Competencias del Historial</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-1">
-                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="heart" class="w-3.5 h-3.5 text-emerald-400"></i> Salvamento y Socorrismo[cite: 1]</h4>
-                    <p class="text-[11px] text-zinc-400 leading-relaxed">Experiencia en seguridad acuática preventiva y primeros auxilios en Provita S.C. e Imput Inversiones Generales en Alcobendas[cite: 1].</p>
+                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="heart" class="w-3.5 h-3.5 text-emerald-400"></i> Socorrismo [cite: 72, 197]</h4>
+                    <p class="text-[11px] text-zinc-400 leading-relaxed">Campañas estivales de seguridad acuática preventiva y primeros auxilios en Provita S.C. e Imput Inversiones (Alcobendas)[cite: 73, 74, 198].</p>
                 </div>
                 <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-1">
-                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="eye" class="w-3.5 h-3.5 text-blue-400"></i> Operario de Control[cite: 1]</h4>
-                    <p class="text-[11px] text-zinc-400 leading-relaxed">9 meses totales dedicados al control y supervisión de accesos de instalaciones deportivas con AOSSA GLOBAL en Sanse[cite: 1].</p>
+                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="eye" class="w-3.5 h-3.5 text-blue-400"></i> Operario de Control [cite: 223, 286]</h4>
+                    <p class="text-[11px] text-zinc-400 leading-relaxed">9 meses totales dedicados a la supervisión, control de accesos e instalaciones técnico-deportivas con AOSSA GLOBAL en Sanse[cite: 221, 222, 284, 285].</p>
                 </div>
                 <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-1">
-                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="clapperboard" class="w-3.5 h-3.5 text-purple-400"></i> Producción Audiovisual[cite: 1]</h4>
-                    <p class="text-[11px] text-zinc-400 leading-relaxed">Figuración de producción para Sony Music Entertainment España en el proyecto musical "Number One" de Ptazeta y Chemarivas[cite: 1].</p>
+                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="clapperboard" class="w-3.5 h-3.5 text-purple-400"></i> Producción Audiovisual [cite: 248]</h4>
+                    <p class="text-[11px] text-zinc-400 leading-relaxed">Figuración para Sony Music Entertainment en la grabación del proyecto musical "Number One" de Ptazeta y Chemarivas[cite: 247, 248, 250].</p>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 5: APTITUDES DESTACADAS (Estilo Display Cards Adaptado) -->
         <section class="space-y-6 text-center">
-            <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Aptitudes y Distinciones</h2>
+            <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Aptitudes y Distinciones [cite: 5, 9]</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
                 <div class="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl space-y-2 hover:border-orange-500/40 transition-colors">
                     <span class="p-1.5 inline-block rounded-full bg-zinc-800 text-orange-400"><i data-lucide="award" class="w-4 h-4"></i></span>
-                    <h3 class="text-sm font-bold text-white">Alto Rendimiento</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Reconocido como Deportista de Nivel Internacional, Nacional y con Talento por organismos oficiales[cite: 1].</p>
+                    <h3 class="text-sm font-bold text-white">Alto Rendimiento [cite: 11]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Reconocido formalmente como Deportista de Nivel Internacional, Nacional y con Talento[cite: 11, 12, 13].</p>
                 </div>
 
                 <div class="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl space-y-2 hover:border-blue-500/40 transition-colors">
                     <span class="p-1.5 inline-block rounded-full bg-zinc-800 text-blue-400"><i data-lucide="heart-handshake" class="w-4 h-4"></i></span>
-                    <h3 class="text-sm font-bold text-white">Servicio Voluntario</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Colaborador y voluntario de primera línea activo en Cruz Roja Española y Protección Civil[cite: 1].</p>
+                    <h3 class="text-sm font-bold text-white">Servicio Voluntario [cite: 7, 8]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Colaborador y voluntario de primera línea dedicado en Cruz Roja Española y Protección Civil[cite: 7, 8].</p>
                 </div>
 
                 <div class="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl space-y-2 hover:border-purple-500/40 transition-colors">
                     <span class="p-1.5 inline-block rounded-full bg-zinc-800 text-purple-400"><i data-lucide="check-circle" class="w-4 h-4"></i></span>
-                    <h3 class="text-sm font-bold text-white">Socio Certificado</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Certificación oficial de socio de la Asociación Soul Wheel colaborando activamente de forma desinteresada[cite: 1].</p>
+                    <h3 class="text-sm font-bold text-white">Socio Oficial [cite: 6, 10]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Certificación oficial de socio de la Asociación Soul Wheel colaborando de forma activa y desinteresada[cite: 6, 10, 14].</p>
                 </div>
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer class="border-t border-zinc-900 pt-8 text-center text-xs text-zinc-600 font-mono">
-            <p>© 2026 Daniel Durán García • Shader Inicial Integrado de forma Premium[cite: 1]</p>
+            <p>© 2026 Daniel Durán García • Despliegue Premium con Órbita Radial y Scroll</p>
         </footer>
     </div>
 
-    <!-- SCRIPT DE ANIMACIÓN MATH SHADER (Three.js Exacto del Prompt) -->
     <script>
         const container = document.getElementById('shader-container');
         
-        // Vertex Shader Exacto de tu Primer Prompt
-        const vertexShader = `
-            void main() {
-                gl_Position = vec4( position, 1.0 );
-            }
-        `;
-        
-        // Fragment Shader Exacto de tu Primer Prompt
+        const vertexShader = `void main() { gl_Position = vec4(position, 1.0); }`;
         const fragmentShader = `
             #define TWO_PI 6.2831853072
             #define PI 3.14159265359
-
             precision highp float;
             uniform vec2 resolution;
             uniform float time;
-
             void main(void) {
                 vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
                 float t = time*0.05;
                 float lineWidth = 0.002;
-
                 vec3 color = vec3(0.0);
                 for(int j = 0; j < 3; j++){
                     for(int i=0; i < 5; i++){
                         color[j] += lineWidth*float(i*i) / abs(fract(t - 0.01*float(j)+float(i)*0.01)*5.0 - length(uv) + mod(uv.x+uv.y, 0.2));
                     }
                 }
-                
                 gl_FragColor = vec4(color[0],color[1],color[2],1.0);
             }
         `;
 
-        // Inicialización de la escena según la lógica dada
-        const camera = new THREE.Camera(); 
-        camera.position.z = 1;
-        
+        const camera = new THREE.Camera(); camera.position.z = 1;
         const scene = new THREE.Scene();
         const geometry = new THREE.PlaneGeometry(2, 2);
-        
-        const uniforms = { 
-            time: { type: "f", value: 1.0 }, 
-            resolution: { type: "v2", value: new THREE.Vector2() } 
-        };
-        
+        const uniforms = { time: { type: "f", value: 1.0 }, resolution: { value: new THREE.Vector2() } };
         const material = new THREE.ShaderMaterial({ uniforms, vertexShader, fragmentShader });
-        const mesh = new THREE.Mesh(geometry, material); 
-        scene.add(mesh);
+        const mesh = new THREE.Mesh(geometry, material); scene.add(mesh);
         
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -315,12 +341,8 @@
             uniforms.resolution.value.x = renderer.domElement.width;
             uniforms.resolution.value.y = renderer.domElement.height;
         }
-        
-        // Ajuste inicial y listener de redimensionamiento fluido
-        resize(); 
-        window.addEventListener('resize', resize, false);
+        resize(); window.addEventListener('resize', resize, false);
 
-        // Bucle de renderizado matemático (Uniform time += 0.05)
         function animate() {
             requestAnimationFrame(animate);
             uniforms.time.value += 0.05;
@@ -328,8 +350,112 @@
         }
         animate();
 
-        // Inicializar iconos de Lucide
-        lucide.createIcons();
+        /* --- CONTROL DE SCROLL ADAPTADO (LÓGICA DEL PROMPT DE CONTAINER SCROLL) --- */
+        const tabletCard = document.getElementById('container-scroll-card');
+        const scrollHeader = document.getElementById('scroll-header');
+
+        window.addEventListener('scroll', () => {
+            const rect = tabletCard.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+            
+            if (rect.top < viewHeight && rect.bottom > 0) {
+                const progress = Math.min(1, Math.max(0, (viewHeight - rect.top) / (viewHeight + 100)));
+                
+                const rotateX = Math.max(0, 20 - (progress * 25));
+                const scale = Math.max(1, 1.05 - (progress * 0.05));
+                const translateY = Math.max(-100, 0 - (progress * 100));
+
+                tabletCard.style.transform = `rotateX(${rotateX}deg) scale(${scale})`;
+                scrollHeader.style.transform = `translateY(${translateY}px)`;
+            }
+        });
+
+        /* --- JAVASCRIPT DEL COMPONENTE RADIAL ORBITAL TIMELINE NATIVO --- */
+        const profileTimelineData = [
+            { id: 1, title: "Exhibición Sanse", date: "Mayo 2023", content: "Liderazgo técnico en la exhibición urbana masiva Sanse Urbano coordinando actividades.", icon: "bike", relatedIds: [2], status: "completed", energy: 100 },
+            { id: 2, title: "Park Jam", date: "Junio 2022", content: "Organización y control de rampas en el Park Jam Scooter con Madrid Scootevents.", icon: "zap", relatedIds: [1, 3], status: "completed", energy: 95 },
+            { id: 3, title: "Campus Gigantes", date: "Julio 2022", content: "Monitor técnico de dirección de grupos de baloncesto en el Campus Gigantes con Kellogs.", icon: "users", relatedIds: [2, 4], status: "completed", energy: 85 },
+            { id: 4, title: "The Brutal Bowl", date: "Julio 2021", content: "Coordinación táctica de pistas en el evento urbano masivo The Brutal Bowl Party 4.", icon: "award", relatedIds: [3, 5], status: "completed", energy: 90 },
+            { id: 5, title: "Apertura Skateparks", date: "Enero 2021", content: "Gestión técnica de flujos en las inauguraciones oficiales de los skateparks de Tres Cantos y Fuenlabrada.", icon: "map-pin", relatedIds: [4], status: "completed", energy: 80 }
+        ];
+
+        let rotationAngle = 0;
+        let autoRotate = true;
+        let activeNodeId = null;
+        const nodesWrapper = document.getElementById('nodes-wrapper');
+
+        function renderNodes() {
+            nodesWrapper.innerHTML = '';
+            const total = profileTimelineData.length;
+            const radius = 160;
+
+            profileTimelineData.forEach((item, index) => {
+                const angle = ((index / total) * 360 + rotationAngle) % 360;
+                const radian = (angle * Math.PI) / 180;
+                const x = radius * Math.cos(radian);
+                const y = radius * Math.sin(radian);
+                
+                const zIndex = Math.round(100 + 50 * Math.cos(radian));
+                const opacity = activeNodeId === item.id ? 1 : Math.max(0.4, Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2)));
+                const isExpanded = activeNodeId === item.id;
+                const isRelated = activeNodeId && profileTimelineData.find(n => n.id === activeNodeId)?.relatedIds.includes(item.id);
+
+                let bgClass = "bg-black text-white border-white/40";
+                if (isExpanded) bgClass = "bg-white text-black border-white scale-125 shadow-lg shadow-white/20";
+                else if (isRelated) bgClass = "bg-zinc-800 text-orange-400 border-orange-500 animate-pulse-custom";
+
+                const nodeHtml = `
+                    <div class="absolute node-transition flex flex-col items-center cursor-pointer" style="transform: translate(${x}px, ${y}px); z-index: ${zIndex}; opacity: ${opacity};" onclick="clickNode(event, ${item.id}, ${index})">
+                        <div class="absolute rounded-full -inset-2 pointer-events-none opacity-20 bg-gradient-to-r from-orange-500 to-purple-600 blur-sm" style="width: 50px; height: 50px; transform: translate(-5px, -5px);"></div>
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center border-2 ${bgClass}">
+                            <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+                        </div>
+                        <div class="absolute top-12 whitespace-nowrap text-[10px] font-mono tracking-wider text-white bg-black/80 px-2 py-0.5 rounded border border-zinc-800">${item.title}</div>
+                        ${isExpanded ? `
+                            <div class="absolute top-20 left-1/2 -translate-x-1/2 w-64 bg-zinc-950/95 border border-zinc-800 p-4 rounded-xl shadow-2xl backdrop-blur-md z-50 text-left" onclick="event.stopPropagation()">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-[9px] font-bold px-2 py-0.5 rounded bg-white text-black font-mono">${item.status.toUpperCase()}</span>
+                                    <span class="text-[10px] font-mono text-zinc-500">${item.date}</span>
+                                </div>
+                                <h4 class="text-xs font-black text-white uppercase mb-1">${item.title}</h4>
+                                <p class="text-[11px] text-zinc-400 leading-normal mb-3">${item.content}</p>
+                                <div class="pt-2 border-t border-zinc-900">
+                                    <div class="flex justify-between text-[10px] text-zinc-500 mb-1 font-mono">
+                                        <span>Exigencia Logística</span>
+                                        <span class="text-orange-400 font-bold">${item.energy}%</span>
+                                    </div>
+                                    <div class="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
+                                        <div class="h-full bg-gradient-to-r from-orange-500 to-purple-500" style="width: ${item.energy}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                nodesWrapper.insertAdjacentHTML('beforeend', nodeHtml);
+            });
+            lucide.createIcons();
+        }
+
+        function clickNode(e, id, index) {
+            e.stopPropagation();
+            if (activeNodeId === id) {
+                activeNodeId = null;
+                autoRotate = true;
+            } else {
+                activeNodeId = id;
+                autoRotate = false;
+                const total = profileTimelineData.length;
+                rotationAngle = (270 - ((index / total) * 360)) % 360;
+            }
+            renderNodes();
+        }
+
+        function resetTimeline(e) { activeNodeId = null; autoRotate = true; renderNodes(); }
+        setInterval(() => { if (autoRotate) { rotationAngle = (rotationAngle + 0.2) % 360; renderNodes(); } }, 40);
+
+        // Inicializar Órbita
+        renderNodes();
     </script>
 </body>
 </html>
