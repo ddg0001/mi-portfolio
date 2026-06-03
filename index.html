@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Durán | Portfolio Profesional</title>
+    <!-- Tailwind CSS para el diseño premium y fluido -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Lucide Icons para los iconos limpios -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Three.js para la animación matemática de Shaders en el fondo del Hero -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         body { 
@@ -20,10 +23,11 @@
                 radial-gradient(at 50% 100%, rgba(30, 64, 175, 0.05) 0px, transparent 50%);
         }
         
-        /* Estilos nativos del prompt para ContainerScroll (Efecto 3D de la Tablet) */
+        /* Contenedor con perspectiva para simular el efecto 3D de ContainerScroll */
         .scroll-perspective {
             perspective: 1000px;
         }
+        /* La tarjeta que rota dinámicamente con JS emulando Framer Motion */
         .scroll-card {
             transform: rotateX(15deg) scale(0.95);
             transition: transform 0.1s ease-out;
@@ -41,6 +45,7 @@
 </head>
 <body class="text-zinc-100 font-sans selection:bg-orange-500 selection:text-black min-h-screen relative antialiased">
 
+    <!-- COMPONENTE 1: HERO CON SHADER TOTALMENTE EN EL FONDO -->
     <header class="relative h-screen w-full flex items-center justify-center overflow-hidden border-b border-zinc-900/60">
         <div id="shader-container" class="absolute inset-0 w-full h-full z-0 opacity-70"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-(#020204) z-10"></div>
@@ -54,20 +59,20 @@
                     Daniel Durán García
                 </h1>
                 <p class="text-xs sm:text-sm font-mono uppercase tracking-widest text-zinc-300 bg-black/40 border border-zinc-800/60 inline-block px-3 py-1 rounded-md backdrop-blur-sm">
-                    Técnico Superior en Enseñanza y Animación Sociodeportiva (TSEAS) [cite: 16, 19]
+                    Técnico Superior en Enseñanza y Animación Sociodeportiva (TSEAS)[cite: 1]
                 </p>
             </div>
 
             <p class="text-base sm:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed drop-shadow">
-                Estudiante universitario de Ciencias de la Actividad Física y del Deporte (<strong class="text-white">CAFYD</strong>) en la Universidad Europea[cite: 20, 30]. Con doble especialización máster en Entrenamiento Personal y Nutrición[cite: 19]. Más de 3 años de experiencia liderando y dinamizando grupos[cite: 20].
+                Estudiante universitario de Ciencias de la Actividad Física y del Deporte (<strong>CAFYD</strong>) en la Universidad Europea[cite: 1]. Con doble especialización máster en Entrenamiento Personal y Nutrición[cite: 1]. Más de 3 años de experiencia liderando y dinamizando grupos[cite: 1].
             </p>
 
             <div class="flex flex-wrap justify-center gap-3 pt-2">
                 <a href="mailto:dani.duran.garcia@gmail.com" class="px-5 py-2.5 bg-white text-black font-semibold rounded-xl hover:bg-orange-500 hover:text-white transition-all text-sm shadow-xl">
-                    Contactar <span class="text-xs opacity-60">(dani.duran.garcia@gmail.com)</span> [cite: 1, 2]
+                    Contactar <span class="text-xs opacity-60">(dani.duran.garcia@gmail.com)</span>[cite: 1]
                 </a>
                 <a href="https://www.linkedin.com/in/daniel-durán-garcía-61736127a" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-950 text-zinc-300 font-semibold rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all text-sm backdrop-blur-sm">
-                    LinkedIn <i data-lucide="external-link" class="w-3.5 h-3.5"></i> [cite: 3, 4]
+                    LinkedIn <i data-lucide="external-link" class="w-3.5 h-3.5"></i>[cite: 1]
                 </a>
             </div>
             <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-white/40">
@@ -76,110 +81,124 @@
         </div>
     </header>
 
+    <!-- CUERPO DEL PORTFOLIO CON GRADIENT MESH -->
     <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-20 space-y-24 bg-gradient-mesh">
 
+        <!-- SECCIÓN PERFIL: VALOR DIFERENCIAL -->
         <section class="space-y-6">
             <div class="bg-zinc-900/30 border border-zinc-800/80 rounded-2xl p-6 sm:p-8 space-y-4 backdrop-blur-sm">
                 <div class="flex items-center gap-2 text-orange-400 font-mono text-xs uppercase tracking-wider">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> Enfoque Deportivo de Acción [cite: 16]
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Enfoque Deportivo de Acción
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                    Pasión por el Patinaje Scooter Freestyle y la Gestión [cite: 16, 23, 24]
+                    Pasión por el Patinaje Scooter Freestyle y la Gestión
                 </h2>
                 <p class="text-zinc-400 leading-relaxed text-sm sm:text-base">
-                    Mi expertise se centra en el diseño e impartición de actividades de <strong>Team Building</strong>, coordinación de eventos urbanos y deportivos masivos, aplicando conocimientos avanzados en psicología del deporte e inclusión[cite: 21]. Esta disciplina de acción ha forjado en mí la resiliencia y el compromiso necesarios para la alta competición y la gestión de proyectos exigentes[cite: 23].
+                    Mi expertise se centra en el diseño e impartición de actividades de <strong>Team Building</strong>, coordinación de eventos urbanos y deportivos masivos, aplicando conocimientos avanzados en psicología del deporte e inclusión[cite: 1]. Esta disciplina de acción ha forjado en mí la resiliencia y el compromiso necesarios para la alta competición y la gestión de proyectos exigentes[cite: 1].
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div class="flex items-center gap-3 bg-zinc-950 p-3.5 rounded-xl border border-zinc-900">
                         <i data-lucide="users" class="w-5 h-5 text-orange-400"></i>
                         <div>
                             <p class="text-[10px] text-zinc-500 uppercase font-mono">Dinamización</p>
-                            <p class="text-xs font-bold text-zinc-300">+3 años liderando grupos [cite: 20]</p>
+                            <p class="text-xs font-bold text-zinc-300">+3 años liderando grupos[cite: 1]</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-3 bg-zinc-950 p-3.5 rounded-xl border border-zinc-900">
                         <i data-lucide="bike" class="w-5 h-5 text-purple-400"></i>
                         <div>
                             <p class="text-[10px] text-zinc-500 uppercase font-mono">Competición</p>
-                            <p class="text-xs font-bold text-zinc-300">Scooter Rider & Especialista Urbano [cite: 16, 44]</p>
+                            <p class="text-xs font-bold text-zinc-300">Scooter Rider & Especialista Urbano[cite: 1]</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- COMPONENTE 2 OPTIMIZADO: CONTAINER SCROLL CON APILAMIENTO CORREGIDO (Subidas hacia arriba) -->
         <section id="scroll-section" class="w-full py-4 scroll-perspective text-center">
             <div id="scroll-header" class="max-w-5xl mx-auto text-center space-y-3 mb-10 transition-transform duration-200">
-                <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight uppercase">Experiencia en Gestión y Eventos </h2>
-                <p class="text-zinc-500 text-sm max-w-md mx-auto">Pasa el dedo por encima de las cartas de la cascada inclinada para quitarles el filtro gris y sacarlas de la pila.</p>
+                <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight uppercase">Experiencia en Gestión y Eventos</h2>
+                <p class="text-zinc-500 text-sm max-w-md mx-auto">
+                    Pasa el dedo o mantén pulsadas las cartas: ahora las tarjetas traseras suben mucho más arriba para leerse perfectamente[cite: 1].
+                </p>
             </div>
 
+            <!-- Contenedor con Borde #6C6C6C y Fondo #222222 del Prompt -->
             <div id="container-scroll-card" class="scroll-card max-w-5xl mx-auto border-4 border-[#6C6C6C] p-4 sm:p-6 bg-[#222222] rounded-[30px]">
-                <div class="w-full min-h-[460px] rounded-2xl bg-zinc-950 p-6 flex flex-col md:flex-row gap-16 justify-center items-center overflow-hidden">
+                <div class="w-full min-h-[520px] rounded-2xl bg-zinc-950 p-6 flex flex-col md:flex-row gap-24 justify-center items-center overflow-hidden">
                     
-                    <div class="flex flex-col items-center space-y-4">
-                        <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase flex items-center gap-2"><i data-lucide="bike" class="w-4 h-4"></i> Soul Wheel & FNS [cite: 6, 41]</span>
-                        <div class="grid [grid-template-areas:'stack'] place-items-center h-48 w-[22rem]">
+                    <!-- CASILLAS BLOQUE IZQUIERDO: SOUL WHEEL (Ajustadas con traslaciones negativas para forzar subida) -->
+                    <div class="flex flex-col items-center space-y-4 group/left">
+                        <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase flex items-center gap-2"><i data-lucide="bike" class="w-4 h-4"></i> Soul Wheel & FNS[cite: 1]</span>
+                        <div class="grid [grid-template-areas:'stack'] place-items-center h-56 w-[22rem]">
                             
-                            <div class="[grid-area:stack] hover:-translate-y-12 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                            <!-- Carta 1: TreXcantos (Ahora mucho más arriba: -translate-y-20 base, y sube a -translate-y-36) -->
+                            <div class="[grid-area:stack] -translate-y-20 group-hover/left:-translate-y-36 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/50 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/95 p-4 transition-all duration-700 z-10">
                                 <div class="flex items-center gap-2">
                                     <span class="relative inline-block rounded-full bg-purple-950/60 border border-purple-800 p-1.5 text-purple-400"><i data-lucide="navigation" class="w-4 h-4"></i></span>
-                                    <p class="text-sm font-bold text-white">Técnico - TreXcantos [cite: 34, 37]</p>
+                                    <p class="text-sm font-bold text-white">Técnico - TreXcantos[cite: 1]</p>
                                 </div>
-                                <p class="text-xs text-zinc-300 leading-normal">Coordinación de actividades en eventos municipales en Tres Cantos[cite: 36, 37].</p>
-                                <p class="text-[10px] font-mono text-zinc-500">Septiembre 2025 [cite: 35]</p>
+                                <p class="text-xs text-zinc-300 leading-normal">Coordinación de actividades en eventos municipales en Tres Cantos[cite: 1].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">Septiembre 2025[cite: 1]</p>
                             </div>
                             
-                            <div class="[grid-area:stack] translate-x-12 translate-y-8 hover:-translate-y-4 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                            <!-- Carta 2: Fiestas Sanse (Ahora en -translate-y-10 base, y sube a -translate-y-16) -->
+                            <div class="[grid-area:stack] translate-x-6 -translate-y-8 group-hover/left:-translate-y-16 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/95 p-4 transition-all duration-700 z-20">
                                 <div class="flex items-center gap-2">
                                     <span class="relative inline-block rounded-full bg-purple-950/60 border border-purple-800 p-1.5 text-purple-400"><i data-lucide="shield" class="w-4 h-4"></i></span>
-                                    <p class="text-sm font-bold text-white">Fiestas de Sanse [cite: 47]</p>
+                                    <p class="text-sm font-bold text-white">Fiestas de Sanse[cite: 1]</p>
                                 </div>
-                                <p class="text-xs text-zinc-300 leading-normal">Control logístico y dirección de circuitos urbanos en San Sebastián de los Reyes[cite: 46, 47].</p>
-                                <p class="text-[10px] font-mono text-zinc-500">Agosto 2025 [cite: 45]</p>
+                                <p class="text-xs text-zinc-300 leading-normal">Control logístico y dirección de circuitos urbanos en San Sebastián de los Reyes[cite: 1].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">Agosto 2025[cite: 1]</p>
                             </div>
                             
-                            <div class="[grid-area:stack] translate-x-24 translate-y-16 hover:translate-y-6 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-purple-500/30 bg-zinc-900/95 p-4 transition-all duration-700 shadow-xl">
+                            <!-- Carta 3: Madrid Friday Night Skate (La base del frente en el plano inferior) -->
+                            <div class="[grid-area:stack] translate-x-12 translate-y-4 group-hover/left:translate-y-6 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-purple-500/40 bg-zinc-900 p-4 transition-all duration-700 shadow-2xl z-30">
                                 <div class="flex items-center gap-2">
                                     <span class="relative inline-block rounded-full bg-purple-500/20 p-1.5 text-purple-400"><i data-lucide="activity" class="w-4 h-4"></i></span>
-                                    <p class="text-sm font-bold text-purple-400">Madrid Friday Night Skate [cite: 41]</p>
+                                    <p class="text-sm font-bold text-purple-400">Madrid Friday Night Skate[cite: 1]</p>
                                 </div>
-                                <p class="text-xs text-zinc-200 leading-normal">Especialista técnico deportivo en control operativo y seguridad de rutas masivas[cite: 41, 44].</p>
-                                <p class="text-[10px] font-mono text-zinc-400">Mobility Week / Iskate.madrid [cite: 42, 43]</p>
+                                <p class="text-xs text-zinc-200 leading-normal">Especialista técnico deportivo en control operativo y seguridad de rutas masivas[cite: 1].</p>
+                                <p class="text-[10px] font-mono text-zinc-400">Mobility Week / Iskate.madrid[cite: 1]</p>
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="flex flex-col items-center space-y-4 pt-10 md:pt-0">
-                        <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> Kaizen Team Building [cite: 75, 107]</span>
-                        <div class="grid [grid-template-areas:'stack'] place-items-center h-48 w-[22rem]">
+                    <!-- BLOQUE DERECHO: KAIZEN TEAM BUILDING (Ajustadas con traslaciones negativas para forzar subida) -->
+                    <div class="flex flex-col items-center space-y-4 pt-16 md:pt-0 group/right">
+                        <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> Kaizen Team Building[cite: 1]</span>
+                        <div class="grid [grid-template-areas:'stack'] place-items-center h-56 w-[22rem]">
                             
-                            <div class="[grid-area:stack] hover:-translate-y-12 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                            <!-- Carta 1: Ruta Interprovincial (Ahora mucho más arriba: -translate-y-20 base, y sube a -translate-y-36) -->
+                            <div class="[grid-area:stack] -translate-y-20 group-hover/right:-translate-y-36 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/50 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/95 p-4 transition-all duration-700 z-10">
                                 <div class="flex items-center gap-2">
                                     <span class="relative inline-block rounded-full bg-blue-950/60 border border-blue-800 p-1.5 text-blue-400"><i data-lucide="map" class="w-4 h-4"></i></span>
-                                    <p class="text-sm font-bold text-white">Ruta Interprovincial [cite: 207]</p>
+                                    <p class="text-sm font-bold text-white">Ruta Interprovincial[cite: 1]</p>
                                 </div>
-                                <p class="text-xs text-zinc-300 leading-normal">Dinamización logística de eventos en Zaragoza, Toledo, Burgos, Zamora y Segovia[cite: 77, 79, 84, 92, 100].</p>
-                                <p class="text-[10px] font-mono text-zinc-500">2024 - 2025 [cite: 75, 107]</p>
+                                <p class="text-xs text-zinc-300 leading-normal">Dinamización logística de eventos en Zaragoza, Toledo, Burgos, Zamora y Segovia[cite: 1].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">2024 - 2025[cite: 1]</p>
                             </div>
                             
-                            <div class="[grid-area:stack] translate-x-12 translate-y-8 hover:-translate-y-4 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/90 p-4 transition-all duration-700">
+                            <!-- Carta 2: Dinamización Local (Ahora en -translate-y-10 base, y sube a -translate-y-16) -->
+                            <div class="[grid-area:stack] translate-x-6 -translate-y-8 group-hover/right:-translate-y-16 before:absolute before:inset-0 before:rounded-xl before:content-[''] before:bg-zinc-950/40 grayscale hover:grayscale-0 before:transition-opacity before:duration-700 hover:before:opacity-0 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-zinc-800 bg-zinc-900/95 p-4 transition-all duration-700 z-20">
                                 <div class="flex items-center gap-2">
                                     <span class="relative inline-block rounded-full bg-blue-950/60 border border-blue-800 p-1.5 text-blue-400"><i data-lucide="map-pin" class="w-4 h-4"></i></span>
-                                    <p class="text-sm font-bold text-white">Dinamización Local [cite: 20]</p>
+                                    <p class="text-sm font-bold text-white">Dinamización Local[cite: 1]</p>
                                 </div>
-                                <p class="text-xs text-zinc-300 leading-normal">Monitor de actividades en Colmenar, Arganda del Rey, Villalba y Madrid Centro[cite: 76, 87, 94, 98, 201].</p>
-                                <p class="text-[10px] font-mono text-zinc-500">Eventos Corporativos [cite: 38]</p>
+                                <p class="text-xs text-zinc-300 leading-normal">Monitor de actividades en Colmenar, Arganda del Rey, Villalba y Madrid Centro[cite: 1].</p>
+                                <p class="text-[10px] font-mono text-zinc-500">Eventos Corporativos[cite: 1]</p>
                             </div>
                             
-                            <div class="[grid-area:stack] translate-x-24 translate-y-16 hover:translate-y-6 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-blue-500/30 bg-zinc-900/95 p-4 transition-all duration-700 shadow-xl">
+                            <!-- Carta 3: Auxiliar de Dirección (Frente inferior) -->
+                            <div class="[grid-area:stack] translate-x-12 translate-y-4 group-hover/right:translate-y-6 relative flex h-36 w-[22rem] -skew-y-[8deg] select-none flex-col justify-between rounded-xl border-2 border-blue-500/40 bg-zinc-900 p-4 transition-all duration-700 shadow-2xl z-30">
                                 <div class="flex items-center gap-2">
                                     <span class="relative inline-block rounded-full bg-blue-500/20 p-1.5 text-blue-400"><i data-lucide="folder-open" class="w-4 h-4"></i></span>
-                                    <p class="text-sm font-bold text-blue-400">Auxiliar Administrativo [cite: 205]</p>
+                                    <p class="text-sm font-bold text-blue-400">Auxiliar Administrativo[cite: 1]</p>
                                 </div>
-                                <p class="text-xs text-zinc-200 leading-normal">Soporte y gestión organizativa interna de agendas y recursos de transporte por España[cite: 206, 207].</p>
-                                <p class="text-[10px] font-mono text-zinc-400">Estructura Kaizen (6 meses) [cite: 199, 206]</p>
+                                <p class="text-xs text-zinc-200 leading-normal">Soporte y gestión organizativa interna de agendas y recursos de transporte por España[cite: 1].</p>
+                                <p class="text-[10px] font-mono text-zinc-400">Estructura Kaizen (6 meses)[cite: 1]</p>
                             </div>
 
                         </div>
@@ -189,6 +208,7 @@
             </div>
         </section>
 
+        <!-- COMPONENTE 3: RADIAL ORBITAL TIMELINE -->
         <section class="py-16 bg-black relative border-t border-zinc-900/80 overflow-hidden min-h-[650px] flex flex-col items-center justify-center">
             <div class="max-w-3xl mx-auto text-center px-4 mb-4 space-y-3 relative z-30">
                 <h2 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight uppercase">Cronograma Orbital de Proyectos</h2>
@@ -209,98 +229,103 @@
             </div>
         </section>
 
+        <!-- SECCIÓN 4: FORMACIÓN ACADÉMICA -->
         <section class="space-y-6">
             <div class="flex items-center gap-2 border-b border-zinc-800 pb-3">
                 <i data-lucide="graduation-cap" class="w-5 h-5 text-orange-500"></i>
-                <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Historial Educativo [cite: 327]</h2>
+                <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Historial Educativo</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 space-y-3">
                     <div class="flex items-center gap-2 text-xs font-mono text-orange-400">
-                        <span>2025 - PRESENTE</span> • UNIVERSIDAD EUROPEA [cite: 26, 28]
+                        <span>2025 - PRESENTE</span> • UNIVERSIDAD EUROPEA[cite: 1]
                     </div>
-                    <h3 class="text-base font-bold text-white">Ciencias de la Actividad Física y del Deporte (CAFYD) [cite: 30]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Estudios de grado enfocados en alto rendimiento, biomecánica aplicada, fisiología del ejercicio y dirección técnica corporativa[cite: 21, 27].</p>
+                    <h3 class="text-base font-bold text-white">Ciencias de la Actividad Física y del Deporte (CAFYD)[cite: 1]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Estudios de grado enfocados en alto rendimiento, biomecánica aplicada, fisiología del ejercicio y dirección técnica corporativa[cite: 1].</p>
                 </div>
 
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 space-y-3">
                     <div class="flex items-center gap-2 text-xs font-mono text-purple-400">
-                        <span>2022 - 2024</span> • IES PINTOR ANTONIO LÓPEZ [cite: 328, 329]
+                        <span>2022 - 2024</span> • IES PINTOR ANTONIO LÓPEZ[cite: 1]
                     </div>
-                    <h3 class="text-base font-bold text-white">TSEAS (Enseñanza y Animación Sociodeportiva) [cite: 329]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Técnico Superior capacitado oficialmente en el liderazgo, programación y control táctico de actividades físico-deportivas[cite: 19].</p>
+                    <h3 class="text-base font-bold text-white">TSEAS (Enseñanza y Animación Sociodeportiva)[cite: 1]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Técnico Superior capacitado oficialmente en el liderazgo, programación y control táctico de actividades físico-deportivas[cite: 1].</p>
                 </div>
 
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 space-y-3">
                     <div class="flex items-center gap-2 text-xs font-mono text-blue-400">
-                        <span>2020 - 2022</span> • MEDAC [cite: 330, 332]
+                        <span>2020 - 2022</span> • MEDAC[cite: 1]
                     </div>
-                    <h3 class="text-base font-bold text-white">TECO (Actividades en el Medio Natural) [cite: 332]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Conducción oficial de grupos en itinerarios físico-deportivos en entornos de montaña y medio natural abierto[cite: 332].</p>
+                    <h3 class="text-base font-bold text-white">TECO (Actividades en el Medio Natural)[cite: 1]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Conducción oficial de grupos en itinerarios físico-deportivos en entornos de montaña y medio natural abierto[cite: 1].</p>
                 </div>
 
                 <div class="bg-zinc-950 p-5 rounded-xl border border-zinc-900 flex flex-col justify-center space-y-2.5">
-                    <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-900 pb-1.5 font-mono">Másteres Profesionales Avanzados (MEDAC) [cite: 19, 333, 335]</h4>
+                    <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-widest border-b border-zinc-900 pb-1.5 font-mono">Másteres Profesionales Avanzados (MEDAC)[cite: 1]</h4>
                     <div class="flex items-center justify-between text-xs bg-zinc-900/40 px-3 py-2 rounded-lg border border-zinc-800/50">
-                        <span class="text-zinc-200 font-medium">Entrenamiento Personal [cite: 334]</span>
-                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025 [cite: 334]</span>
+                        <span class="text-zinc-200 font-medium">Entrenamiento Personal[cite: 1]</span>
+                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025[cite: 1]</span>
                     </div>
                     <div class="flex items-center justify-between text-xs bg-zinc-900/40 px-3 py-2 rounded-lg border border-zinc-800/50">
-                        <span class="text-zinc-200 font-medium">Nutrición Deportiva y Clínica [cite: 336]</span>
-                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025 [cite: 336]</span>
+                        <span class="text-zinc-200 font-medium">Nutrición Deportiva y Clínica[cite: 1]</span>
+                        <span class="text-zinc-500 text-[10px] font-mono">2024 - 2025[cite: 1]</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SECCIÓN DE SOPORTE TÉCNICO COMPLEMENTARIO -->
         <section class="space-y-4">
             <h3 class="text-sm font-bold text-zinc-500 font-mono uppercase tracking-wider">Otras Competencias del Historial</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-1">
-                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="heart" class="w-3.5 h-3.5 text-emerald-400"></i> Socorrismo [cite: 72, 197]</h4>
-                    <p class="text-[11px] text-zinc-400 leading-relaxed">Campañas estivales de seguridad acuática preventiva y primeros auxilios en Provita S.C. e Imput Inversiones (Alcobendas)[cite: 73, 74, 198].</p>
+                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="heart" class="w-3.5 h-3.5 text-emerald-400"></i> Socorrismo[cite: 1]</h4>
+                    <p class="text-[11px] text-zinc-400 leading-relaxed">Campañas estivales de seguridad acuática preventiva y primeros auxilios en Provita S.C. e Imput Inversiones (Alcobendas)[cite: 1].</p>
                 </div>
                 <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-1">
-                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="eye" class="w-3.5 h-3.5 text-blue-400"></i> Operario de Control [cite: 223, 286]</h4>
-                    <p class="text-[11px] text-zinc-400 leading-relaxed">9 meses totales dedicados a la supervisión, control de accesos e instalaciones técnico-deportivas con AOSSA GLOBAL en Sanse[cite: 221, 222, 284, 285].</p>
+                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="eye" class="w-3.5 h-3.5 text-blue-400"></i> Operario de Control[cite: 1]</h4>
+                    <p class="text-[11px] text-zinc-400 leading-relaxed">9 meses totales dedicados a la supervisión, control de accesos e instalaciones técnico-deportivas con AOSSA GLOBAL en Sanse[cite: 1].</p>
                 </div>
                 <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-1">
-                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="clapperboard" class="w-3.5 h-3.5 text-purple-400"></i> Producción Audiovisual [cite: 248]</h4>
-                    <p class="text-[11px] text-zinc-400 leading-relaxed">Figuración para Sony Music Entertainment en la grabación del proyecto musical "Number One" de Ptazeta y Chemarivas[cite: 247, 248, 250].</p>
+                    <h4 class="text-xs font-bold text-white flex items-center gap-2"><i data-lucide="clapperboard" class="w-3.5 h-3.5 text-purple-400"></i> Producción Audiovisual[cite: 1]</h4>
+                    <p class="text-[11px] text-zinc-400 leading-relaxed">Figuración para Sony Music Entertainment en la grabación del proyecto musical "Number One" de Ptazeta y Chemarivas[cite: 1].</p>
                 </div>
             </div>
         </section>
 
+        <!-- SECCIÓN 5: APTITUDES DESTACADAS (Estilo Display Cards Adaptado) -->
         <section class="space-y-6 text-center">
-            <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Aptitudes y Distinciones [cite: 5, 9]</h2>
+            <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Aptitudes y Distinciones[cite: 1]</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
                 <div class="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl space-y-2 hover:border-orange-500/40 transition-colors">
                     <span class="p-1.5 inline-block rounded-full bg-zinc-800 text-orange-400"><i data-lucide="award" class="w-4 h-4"></i></span>
-                    <h3 class="text-sm font-bold text-white">Alto Rendimiento [cite: 11]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Reconocido formalmente como Deportista de Nivel Internacional, Nacional y con Talento[cite: 11, 12, 13].</p>
+                    <h3 class="text-sm font-bold text-white">Alto Rendimiento[cite: 1]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Reconocido formalmente como Deportista de Nivel Internacional, Nacional y con Talento[cite: 1].</p>
                 </div>
 
                 <div class="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl space-y-2 hover:border-blue-500/40 transition-colors">
                     <span class="p-1.5 inline-block rounded-full bg-zinc-800 text-blue-400"><i data-lucide="heart-handshake" class="w-4 h-4"></i></span>
-                    <h3 class="text-sm font-bold text-white">Servicio Voluntario [cite: 7, 8]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Colaborador y voluntario de primera línea dedicado en Cruz Roja Española y Protección Civil[cite: 7, 8].</p>
+                    <h3 class="text-sm font-bold text-white">Servicio Voluntario[cite: 1]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Colaborador y voluntario de primera línea dedicado en Cruz Roja Española y Protección Civil[cite: 1].</p>
                 </div>
 
                 <div class="bg-zinc-900/30 border border-zinc-800 p-5 rounded-xl space-y-2 hover:border-purple-500/40 transition-colors">
                     <span class="p-1.5 inline-block rounded-full bg-zinc-800 text-purple-400"><i data-lucide="check-circle" class="w-4 h-4"></i></span>
-                    <h3 class="text-sm font-bold text-white">Socio Oficial [cite: 6, 10]</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Certificación oficial de socio de la Asociación Soul Wheel colaborando de forma activa y desinteresada[cite: 6, 10, 14].</p>
+                    <h3 class="text-sm font-bold text-white">Socio Oficial[cite: 1]</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Certificación oficial de socio de la Asociación Soul Wheel colaborando de forma activa y desinteresada[cite: 1].</p>
                 </div>
             </div>
         </section>
 
+        <!-- FOOTER -->
         <footer class="border-t border-zinc-900 pt-8 text-center text-xs text-zinc-600 font-mono">
             <p>© 2026 Daniel Durán García • Despliegue Premium con Órbita Radial y Scroll</p>
         </footer>
     </div>
 
+    <!-- SCRIPT GENERAL DE ANIMACIÓN MATH SHADER, TIMELINE ORBITAL Y CONTAINER SCROLL NATIVO -->
     <script>
         const container = document.getElementById('shader-container');
         
